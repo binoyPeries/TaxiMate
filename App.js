@@ -1,20 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text } from "react-native";
+import { TaxiMateColors } from "./constants/colors";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import MeterScreen from "./screens/MeterScreen";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <StatusBar style="light" />
+      <SafeAreaView style={styles.deafultScaffold}>
+        <MeterScreen />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  deafultScaffold: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: TaxiMateColors.backgroundColor,
   },
 });
