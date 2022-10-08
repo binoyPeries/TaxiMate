@@ -1,5 +1,7 @@
 export const TaxiMateColors = {
-  primaryColor: "#3886FE",
-  backgroundColor: "#282F3F",
+  primaryColor: "#BB86FC",
+  secondaryColor: "#03DAC6",
+  backgroundColor: "#121212",
+  containerColor: "#282F3F",
   // your colors
 };
