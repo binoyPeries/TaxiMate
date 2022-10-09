@@ -5,6 +5,7 @@ import {
 import MeterScreen from "../screens/MeterScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { TaxiMateColors } from "../constants/colors";
+import FareRatesScreen from "../screens/FareRatesScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -45,7 +46,7 @@ export default function SideDrawer() {
         }}
       >
         <Drawer.Screen name="Meter" component={MeterScreen} />
-        <Drawer.Screen name="Test" component={MeterScreen} />
+        <Drawer.Screen name="Fare Rates " component={FareRatesScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
