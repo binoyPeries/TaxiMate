@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import DefaultButton from "../components/DefaultButton";
 import { TaxiMateColors } from "../constants/colors";
 import { CommonStyles } from "../constants/commonStyles";
@@ -11,12 +6,12 @@ import { CommonStyles } from "../constants/commonStyles";
 export default function MeterScreen() {
   return (
     <>
-      <ScrollView style={styles.DefaultContainer}>
+      <ScrollView style={CommonStyles.DefaultContainer}>
         <TotalFare />
         <TripDetails />
         <FareDetails />
       </ScrollView>
-      <View>
+      <View style={{ margin: 15 }}>
         <DefaultButton title="Start" />
       </View>
     </>
@@ -25,8 +20,8 @@ export default function MeterScreen() {
 
 function TotalFare(props) {
   return (
-    <View style={styles.InfoConatiner}>
-      <Text style={styles.MainTextcolor}>Total Fare</Text>
+    <View style={styles.infoConatiner}>
+      <Text style={styles.mainTextcolor}>Total Fare</Text>
       <FareInfoRow subText="Rs" mainText="350.00" />
     </View>
   );
@@ -34,15 +29,15 @@ function TotalFare(props) {
 function TripDetails(props) {
   return (
     <View style={{ flexDirection: "row", flex: 1 }}>
-      <View style={[styles.InfoConatiner, { marginRight: 15, height: 130 }]}>
-        <Text style={[styles.MainTextcolor, { fontSize: 23 }]}>Distance</Text>
+      <View style={[styles.infoConatiner, { marginRight: 15, height: 130 }]}>
+        <Text style={[styles.mainTextcolor, { fontSize: 23 }]}>Distance</Text>
         <TripInfoRow subText="km" mainText="11.0" />
       </View>
-      <View style={[styles.InfoConatiner, { height: 130 }]}>
-        <Text style={[styles.MainTextcolor, { fontSize: 23 }]}>
+      <View style={[styles.infoConatiner, { height: 130 }]}>
+        <Text style={[styles.mainTextcolor, { fontSize: 23 }]}>
           Waiting Time
         </Text>
-        <TripInfoRow subText="mins" mainText="11:0" />
+        <TripInfoRow subText="mins" mainText="11:00" />
       </View>
     </View>
   );
@@ -52,7 +47,7 @@ function FareDetails(props) {
   return (
     <View
       style={[
-        styles.InfoConatiner,
+        styles.infoConatiner,
         {
           borderColor: TaxiMateColors.primaryColor,
           height: 230,
@@ -89,7 +84,7 @@ function FareInfoRow(props) {
       >
         {props.subText}
       </Text>
-      <Text style={styles.MainSubTextColor}>{props.mainText}</Text>
+      <Text style={styles.mainSubTextColor}>{props.mainText}</Text>
     </View>
   );
 }
@@ -104,13 +99,15 @@ function TripInfoRow(props) {
         justifyContent: "flex-end",
       }}
     >
-      <Text style={[styles.MainSubTextColor, { fontSize: 45 }]}>
+      <Text
+        style={[styles.mainSubTextColor, { fontSize: 43, paddingRight: 5 }]}
+      >
         {props.mainText}
       </Text>
       <Text
         style={{
           color: "white",
-          fontSize: 20,
+          fontSize: 15,
           paddingRight: 5,
           fontWeight: "700",
         }}
@@ -133,7 +130,7 @@ function FareDetailsRow(props) {
     >
       <Text
         style={[
-          styles.MainSubTextColor,
+          styles.mainSubTextColor,
           { fontSize: 18, color: "white", fontWeight: "normal" },
         ]}
       >
@@ -141,7 +138,7 @@ function FareDetailsRow(props) {
       </Text>
       <Text
         style={{
-          color: TaxiMateColors.secondaryColor,
+          color: TaxiMateColors.primaryColor,
           fontSize: 35,
           paddingRight: 15,
           fontWeight: "700",
@@ -153,29 +150,24 @@ function FareDetailsRow(props) {
   );
 }
 const styles = StyleSheet.create({
-  InfoConatiner: {
+  infoConatiner: {
     ...CommonStyles.InfoBox,
     height: 150,
     justifyContent: "space-between",
   },
 
-  DefaultContainer: {
-    paddingHorizontal: 15,
-    paddingTop: 20,
-  },
-  MainTextcolor: {
+  mainTextcolor: {
     color: "white",
     fontSize: 28,
   },
-  MainSubTextColor: {
+  mainSubTextColor: {
     color: TaxiMateColors.primaryColor,
     fontSize: 57,
-    paddingRight: 10,
     fontWeight: "700",
     textAlign: "right",
   },
 
-  ButtonStyle: {
+  buttonStyle: {
     backgroundColor: TaxiMateColors.secondaryColor,
     padding: 8,
     borderRadius: 10,

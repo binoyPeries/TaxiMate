@@ -3,13 +3,18 @@ import { TaxiMateColors } from "../constants/colors";
 
 export default function DefaultButton(props) {
   return (
-    <TouchableOpacity style={styles.ButtonStyle}>
+    <TouchableOpacity
+      style={[
+        styles.buttonStyle,
+        { backgroundColor: props.btnColor ?? TaxiMateColors.secondaryColor },
+      ]}
+    >
       <Text
         style={{
           color: "white",
-          fontSize: 25,
+          fontSize: 23,
           textAlign: "center",
-          fontWeight: "700",
+          fontWeight: "400",
         }}
       >
         {props.title}
@@ -19,11 +24,10 @@ export default function DefaultButton(props) {
 }
 
 const styles = StyleSheet.create({
-  ButtonStyle: {
-    backgroundColor: TaxiMateColors.secondaryColor,
+  buttonStyle: {
     padding: 8,
     borderRadius: 10,
-    margin: 15,
     marginTop: 8,
+    alignContent: "center",
   },
 });
