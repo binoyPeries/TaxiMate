@@ -1,13 +1,25 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
+import DefaultButton from "../components/DefaultButton";
 import { TaxiMateColors } from "../constants/colors";
 import { CommonStyles } from "../constants/commonStyles";
 
 export default function MeterScreen() {
   return (
-    <ScrollView style={styles.DefaultContainer}>
-      <TotalFare />
-      <TripDetails />
-    </ScrollView>
+    <>
+      <ScrollView style={styles.DefaultContainer}>
+        <TotalFare />
+        <TripDetails />
+        <FareDetails />
+      </ScrollView>
+      <View>
+        <DefaultButton title="Start" />
+      </View>
+    </>
   );
 }
 
@@ -30,8 +42,29 @@ function TripDetails(props) {
         <Text style={[styles.MainTextcolor, { fontSize: 23 }]}>
           Waiting Time
         </Text>
-        <TripInfoRow subText="min" mainText="11:0" />
+        <TripInfoRow subText="mins" mainText="11:0" />
       </View>
+    </View>
+  );
+}
+
+function FareDetails(props) {
+  return (
+    <View
+      style={[
+        styles.InfoConatiner,
+        {
+          borderColor: TaxiMateColors.primaryColor,
+          height: 230,
+          flex: 1,
+          justifyContent: "flex-start",
+        },
+      ]}
+    >
+      <Text style={{ color: "white", fontSize: 23 }}>Fare Details</Text>
+      <FareDetailsRow mainText="First kilometer : " subText="100" />
+      <FareDetailsRow mainText="From second kilometer : " subText="110" />
+      <FareDetailsRow mainText="Waiting Fee (per min) : " subText="10" />
     </View>
   );
 }
@@ -78,7 +111,39 @@ function TripInfoRow(props) {
         style={{
           color: "white",
           fontSize: 20,
-          paddingRight: 8,
+          paddingRight: 5,
+          fontWeight: "700",
+        }}
+      >
+        {props.subText}
+      </Text>
+    </View>
+  );
+}
+
+function FareDetailsRow(props) {
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        alignContent: "flex-end",
+        alignItems: "flex-end",
+        justifyContent: "space-between",
+      }}
+    >
+      <Text
+        style={[
+          styles.MainSubTextColor,
+          { fontSize: 18, color: "white", fontWeight: "normal" },
+        ]}
+      >
+        {props.mainText}
+      </Text>
+      <Text
+        style={{
+          color: TaxiMateColors.secondaryColor,
+          fontSize: 35,
+          paddingRight: 15,
           fontWeight: "700",
         }}
       >
@@ -108,5 +173,13 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     fontWeight: "700",
     textAlign: "right",
+  },
+
+  ButtonStyle: {
+    backgroundColor: TaxiMateColors.secondaryColor,
+    padding: 8,
+    borderRadius: 10,
+    margin: 15,
+    marginTop: 8,
   },
 });
