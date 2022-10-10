@@ -6,6 +6,8 @@ import MeterScreen from "../screens/MeterScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { TaxiMateColors } from "../constants/colors";
 import FareRatesScreen from "../screens/FareRatesScreen";
+import { useContext, useEffect } from "react";
+import { DefaultContext } from "../contextProviders/DefaultContextProvider";
 
 const Drawer = createDrawerNavigator();
 
@@ -22,6 +24,11 @@ const DrawerTheme = {
 };
 
 export default function SideDrawer() {
+  const { database, fareRateService } = useContext(DefaultContext);
+  useEffect(() => {
+    fareRateService.initDatabase(database);
+  }, []);
+
   return (
     <NavigationContainer theme={DrawerTheme}>
       <Drawer.Navigator

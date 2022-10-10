@@ -22,6 +22,8 @@ export default function DefaultTextInput(props) {
         keyboardType="numeric"
         onFocus={() => setActive(true)}
         onBlur={() => setActive(false)}
+        value={props.value}
+        onChangeText={props.onChangeText}
       />
     </View>
   );

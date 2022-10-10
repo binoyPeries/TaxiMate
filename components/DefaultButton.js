@@ -8,6 +8,7 @@ export default function DefaultButton(props) {
         styles.buttonStyle,
         { backgroundColor: props.btnColor ?? TaxiMateColors.secondaryColor },
       ]}
+      onPress={props.onSubmit}
     >
       <Text
         style={{
