@@ -8,7 +8,7 @@ import { DefaultContext } from "../contextProviders/DefaultContextProvider";
 import FareRate from "../models/FareRates";
 import { addFareRate } from "../services/localDbImpl/FareRateServiceImpl";
 
-export default function FareRatesScreen() {
+export default function FareRatesScreen({ navigation }) {
   const [firstKm, setFirstKm] = useState("");
   const [otherKms, setOtherKms] = useState("");
   const [waiting, setWaiting] = useState("");
@@ -18,7 +18,7 @@ export default function FareRatesScreen() {
   // to add rate data to the databse
   function addFareRateEntry() {
     let newRates = new FareRate("", "", firstKm, otherKms, waiting);
-    fareRateService.addFareRate(database, newRates);
+    fareRateService.addFareRate(database, newRates, navigation);
   }
 
   return (
